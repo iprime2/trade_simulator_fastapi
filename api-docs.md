@@ -9,7 +9,7 @@ http://localhost:8000
 
 ---
 
-## 🔁 Live WebSocket Feed
+## 🔁 WebSocket Feed
 
 - **URL:** `wss://ws.gomarket-cpp.goquant.io/ws/l2-orderbook/okx/{symbol}-SWAP`
 - **Example:**  
@@ -85,25 +85,45 @@ Updates the live simulation input parameters used during real-time tick processi
 
 ---
 
-## 🧪 Optional Endpoints (If Implemented)
+## 📡 GET /api/v1/tick
 
-### GET /api/v1/tick
+Returns the most recent Level-2 orderbook tick received from the WebSocket stream.
 
-- Returns the latest tick/orderbook data from the WebSocket stream.
+- **URL:** `/api/v1/tick`
+- **Method:** `GET`
+- **Response Example:**
+```json
+{
+  "timestamp": "2025-05-04T10:39:13Z",
+  "best_bid": 95445.4,
+  "best_ask": 95445.5,
+  "mid_price": 95445.45,
+  "latency_ms": 0.0423
+}
+```
+
+- **Use Cases:**
+  - Display real-time market tick data
+  - Feed latency chart components
+  - Sync tick visuals with current simulation metrics
 
 ---
 
 ## ✅ Response Field Descriptions
 
-| Field             | Type    | Description                                |
-|------------------|---------|--------------------------------------------|
-| `slippage`        | float   | Estimated price deviation due to order size |
-| `fee`             | float   | Estimated execution fee (based on tier)    |
-| `market_impact`   | float   | Expected price move from order absorption  |
-| `net_cost`        | float   | Sum of slippage + fee + market impact      |
-| `latency_ms`      | float   | Processing latency in milliseconds         |
-| `maker_taker_ratio` | string | Estimated execution ratio                  |
-| `asset`           | string  | Selected spot trading pair (e.g., BTC-USDT) |
+| Field               | Type    | Description                                |
+|--------------------|---------|--------------------------------------------|
+| `slippage`         | float   | Estimated price deviation due to order size |
+| `fee`              | float   | Estimated execution fee (based on tier)    |
+| `market_impact`    | float   | Expected price move from order absorption  |
+| `net_cost`         | float   | Sum of slippage + fee + market impact      |
+| `latency_ms`       | float   | Processing latency in milliseconds         |
+| `maker_taker_ratio`| string  | Estimated execution ratio                  |
+| `asset`            | string  | Selected spot trading pair (e.g., BTC-USDT)|
+| `best_bid`         | float   | Best available bid price                   |
+| `best_ask`         | float   | Best available ask price                   |
+| `mid_price`        | float   | Average of best bid and ask                |
+| `timestamp`        | string  | ISO timestamp of the latest tick           |
 
 ---
 
