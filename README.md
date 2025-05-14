@@ -90,4 +90,10 @@ deactivate
 
 ---
 
+## 📚 API Documentation
 
+For detailed information on available API endpoints, request/response formats, and usage examples, see:
+
+👉 [View Full API Docs](./api-docs.md)
+
+---
