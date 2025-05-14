@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+websocket-client
+scikit-learn
+numpy
+pandas
+loguru
